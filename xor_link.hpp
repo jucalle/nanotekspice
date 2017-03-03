@@ -5,7 +5,7 @@
 // Login   <callew_j@epitech.net>
 //
 // Started on  Wed Mar  1 17:37:47 2017 Callewaert
-// Last update Wed Mar  1 17:51:59 2017 Callewaert
+// Last update Fri Mar  3 12:56:09 2017 Callewaert
 //
 
 #ifndef XOR_LINK_HPP_
@@ -15,16 +15,16 @@
 # include "OnePinComp.hpp"
 # include "ILink.hpp"
 
-class			xor_link : public ILink
+class				xor_link : public ILink
 {
 private:
-  onePinComp		*one;
-  onePinComp		*two;
+  std::vector<onePinComp*>	links;
 public:
-  xor_link(onePinComp *one, onePinComp *two);
-  virtual ~xor_link();
-  nts::Tristate		xor_op(nts::Tristate, nts::Tristate);
-  virtual onePinComp	*getPin(size_t) const;
+  xor_link();
+  virtual			~xor_link();
+  nts::Tristate			xor_op(nts::Tristate, nts::Tristate);
+  virtual std::vector<onePinComp*> getPin() const;
+  virtual void			add_link(onePinComp*);
 };
 
 #endif // XOR_LINK_HPP_

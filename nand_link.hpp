@@ -5,7 +5,7 @@
 // Login   <callew_j@epitech.net>
 //
 // Started on  Wed Mar  1 17:42:16 2017 Callewaert
-// Last update Wed Mar  1 17:50:54 2017 Callewaert
+// Last update Fri Mar  3 12:49:05 2017 Callewaert
 //
 
 #ifndef NAND_LINK_HPP_
@@ -15,16 +15,17 @@
 # include "OnePinComp.hpp"
 # include "ILink.hpp"
 
-class			nand_link : public ILink
+class				nand_link : public ILink
 {
 private:
-  onePinComp		*one;
-  onePinComp		*two;
+  std::vector<onePinComp*>	links;
 public:
-  nand_link(onePinComp *one, onePinComp *two);
-  virtual ~nand_link();
-  nts::Tristate		nand_op(nts::Tristate, nts::Tristate);
-  virtual onePinComp	*getPin(size_t) const;
+  nand_link();
+  virtual			~nand_link();
+  nts::Tristate			nand_op(nts::Tristate, nts::Tristate);
+  virtual std::vector<onePinComp*> getPin() const;
+  virtual void			add_link(onePinComp*);
+
 };
 
 #endif // NAND_LINK_HPP_

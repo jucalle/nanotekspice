@@ -5,13 +5,12 @@
 // Login   <callew_j@epitech.net>
 //
 // Started on  Wed Mar  1 17:38:31 2017 Callewaert
-// Last update Thu Mar  2 13:15:48 2017 Callewaert
+// Last update Fri Mar  3 12:57:25 2017 Callewaert
 //
 
 #include "xor_link.hpp"
 
-xor_link::xor_link(onePinComp *one, onePinComp *two)
-  : one(one), two(two)
+xor_link::xor_link()
 {
 }
 
@@ -35,11 +34,12 @@ nts::Tristate	xor_link::xor_op(nts::Tristate a, nts::Tristate b)
   return (nts::Tristate::UNDEFINED);
 }
 
-onePinComp	*xor_link::getPin(size_t pin) const
+std::vector<onePinComp*>	xor_link::getPin() const
 {
-  if (pin == this->one->getPin())
-    return (this->one);
-  else if (pin == this->two->getPin())
-    return (this->two);
-  return (NULL);
+  return (this->links);
+}
+
+void				xor_link::add_link(onePinComp *new_link)
+{
+  this->links.push_back(new_link);
 }

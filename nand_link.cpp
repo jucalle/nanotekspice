@@ -5,13 +5,12 @@
 // Login   <callew_j@epitech.net>
 //
 // Started on  Wed Mar  1 17:43:14 2017 Callewaert
-// Last update Thu Mar  2 13:14:07 2017 Callewaert
+// Last update Fri Mar  3 12:51:38 2017 Callewaert
 //
 
 #include "nand_link.hpp"
 
-nand_link::nand_link(onePinComp *one, onePinComp *two)
-  : one(one), two(two)
+nand_link::nand_link()
 {
 }
 
@@ -35,11 +34,12 @@ nts::Tristate	nand_link::nand_op(nts::Tristate a, nts::Tristate b)
   return (nts::Tristate::UNDEFINED);
 }
 
-onePinComp	*nand_link::getPin(size_t pin) const
+std::vector<onePinComp*>	nand_link::getPin() const
 {
-  if (pin == this->one->getPin())
-    return (this->one);
-  else if (pin == this->two->getPin())
-    return (this->two);
-  return (NULL);
+  return (this->links);
+}
+
+void				nand_link::add_link(onePinComp *new_link)
+{
+  this->links.push_back(new_link);
 }

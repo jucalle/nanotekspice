@@ -5,7 +5,7 @@
 // Login   <callew_j@epitech.net>
 //
 // Started on  Wed Mar  1 17:35:50 2017 Callewaert
-// Last update Wed Mar  1 17:51:21 2017 Callewaert
+// Last update Fri Mar  3 12:54:11 2017 Callewaert
 //
 
 #ifndef OR_LINK_HPP_
@@ -15,16 +15,16 @@
 # include "OnePinComp.hpp"
 # include "ILink.hpp"
 
-class			or_link : public ILink
+class				or_link : public ILink
 {
 private:
-  onePinComp		*one;
-  onePinComp		*two;
+  std::vector<onePinComp*>	links;
 public:
-  or_link(onePinComp *one, onePinComp *two);
-  virtual ~or_link();
-  nts::Tristate		or_op(nts::Tristate, nts::Tristate);
-  virtual onePinComp	*getPin(size_t) const;
+  or_link();
+  virtual			~or_link();
+  nts::Tristate			or_op(nts::Tristate, nts::Tristate);
+  virtual std::vector<onePinComp*> getPin() const;
+  virtual void			add_link(onePinComp*);
 };
 
 #endif // OR_LINK_HPP_

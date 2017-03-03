@@ -5,7 +5,7 @@
 // Login   <callew_j@epitech.net>
 //
 // Started on  Wed Mar  1 17:43:59 2017 Callewaert
-// Last update Wed Mar  1 18:09:09 2017 Callewaert
+// Last update Fri Mar  3 13:00:09 2017 Callewaert
 //
 
 #ifndef NOT_LINK_HPP_
@@ -15,15 +15,16 @@
 # include "OnePinComp.hpp"
 # include "ILink.hpp"
 
-class			not_link : public ILink
+class				not_link : public ILink
 {
 private:
-  onePinComp		*one;
+  std::vector<onePinComp*>	links;
 public:
-  not_link(onePinComp *one);
-  virtual ~not_link();
-  nts::Tristate		not_op(nts::Tristate);
-  virtual onePinComp	*getPin(size_t) const;
+  not_link();
+  virtual			~not_link();
+  nts::Tristate			not_op(nts::Tristate);
+  virtual std::vector<onePinComp*> getPin() const;
+  virtual void			add_link(onePinComp*);
 };
 
 #endif // NOT_LINK_HPP_

@@ -5,13 +5,12 @@
 // Login   <callew_j@epitech.net>
 //
 // Started on  Wed Mar  1 17:36:45 2017 Callewaert
-// Last update Thu Mar  2 13:14:38 2017 Callewaert
+// Last update Fri Mar  3 12:52:29 2017 Callewaert
 //
 
 #include "or_link.hpp"
 
-or_link::or_link(onePinComp *one, onePinComp *two)
-  : one(one), two(two)
+or_link::or_link()
 {
 }
 
@@ -35,11 +34,12 @@ nts::Tristate	or_link::or_op(nts::Tristate a, nts::Tristate b)
   return (nts::Tristate::UNDEFINED);
 }
 
-onePinComp	*or_link::getPin(size_t pin) const
+std::vector<onePinComp*>	or_link::getPin() const
 {
-  if (pin == this->one->getPin())
-    return (this->one);
-  else if (pin == this->two->getPin())
-    return (this->two);
-  return (NULL);
+  return (this->links);
+}
+
+void				or_link::add_link(onePinComp *new_link)
+{
+  this->links.push_back(new_link);
 }

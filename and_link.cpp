@@ -5,7 +5,7 @@
 // Login   <callew_j@epitech.net>
 //
 // Started on  Wed Mar  1 17:27:08 2017 Callewaert
-// Last update Thu Mar  2 14:09:58 2017 Callewaert
+// Last update Fri Mar  3 13:36:36 2017 Callewaert
 //
 
 #include "and_link.hpp"
@@ -14,20 +14,15 @@ and_link::and_link()
 {
 }
 
-and_link::and_link(onePinComp *one, onePinComp *two)
-  : one(one), two(two)
-{
-}
-
 and_link::~and_link()
 {
 }
 
-nts::Tristate	and_link::and_op(nts::Tristate a, nts::Tristate b)
+nts::Tristate			and_link::and_op(nts::Tristate a, nts::Tristate b)
 {
-  bool          tmp1;
-  bool          tmp2;
-  nts::Tristate result;
+  bool				tmp1;
+  bool				tmp2;
+  nts::Tristate			result;
 
   if (a != nts::Tristate::UNDEFINED && b != nts::Tristate::UNDEFINED)
     {
@@ -39,21 +34,12 @@ nts::Tristate	and_link::and_op(nts::Tristate a, nts::Tristate b)
   return (nts::Tristate::UNDEFINED);
 }
 
-onePinComp	*and_link::getPin(size_t pin) const
+std::vector<onePinComp*>	and_link::getPin() const
 {
-  if (pin == this->one->getPin())
-    return (this->one);
-  else if (pin == this->two->getPin())
-    return (this->two);
-  return (NULL);
+  return (this->links);
 }
 
-void		and_link::setOne(onePinComp& one)
+void				and_link::add_link(onePinComp *new_link)
 {
-  this->one = &one;
-}
-
-void		and_link::setTwo(onePinComp& two)
-{
-  this->two = &two;
+  this->links.push_back(new_link);
 }

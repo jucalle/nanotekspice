@@ -5,7 +5,7 @@
 // Login   <callew_j@epitech.net>
 //
 // Started on  Wed Mar  1 17:40:44 2017 Callewaert
-// Last update Wed Mar  1 17:51:34 2017 Callewaert
+// Last update Fri Mar  3 12:54:11 2017 Callewaert
 //
 
 #ifndef NOR_LINK_HPP_
@@ -15,16 +15,16 @@
 # include "OnePinComp.hpp"
 # include "ILink.hpp"
 
-class			nor_link : public ILink
+class				nor_link : public ILink
 {
 private:
-  onePinComp		*one;
-  onePinComp		*two;
+  std::vector<onePinComp*>	links;
 public:
-  nor_link(onePinComp *one, onePinComp *two);
-  virtual ~nor_link();
-  nts::Tristate		nor_op(nts::Tristate, nts::Tristate);
-  virtual onePinComp	*getPin(size_t) const;
+  nor_link();
+  virtual			~nor_link();
+  nts::Tristate			nor_op(nts::Tristate, nts::Tristate);
+  virtual std::vector<onePinComp*> getPin() const;
+  virtual void			add_link(onePinComp*);
 };
 
 #endif // NOR_LINK_HPP_

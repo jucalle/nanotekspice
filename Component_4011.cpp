@@ -1,33 +1,33 @@
 //
-// Component_4081.cpp for  in /home/julien/rendu/tek2/CPP/cpp_nanotekspice
+// Component_4011.cpp for  in /home/julien/rendu/tek2/CPP/nanotekspice
 //
 // Made by Callewaert
 // Login   <callew_j@epitech.net>
 //
-// Started on  Thu Mar  2 14:26:32 2017 Callewaert
-// Last update Fri Mar  3 14:53:06 2017 Callewaert
+// Started on  Fri Mar  3 13:24:49 2017 Callewaert
+// Last update Fri Mar  3 14:51:45 2017 Callewaert
 //
 
 #include "OnePinComp.hpp"
-#include "Component_4081.hpp"
+#include "Component_4011.hpp"
 
-Component_4081::Component_4081(std::string const& name)
+Component_4011::Component_4011(std::string const& name)
   : name(name)
 {
   this->links = {
-    std::make_pair(3, new and_link()),
-    std::make_pair(4, new and_link()),
-    std::make_pair(10, new and_link()),
-    std::make_pair(11, new and_link())
+    std::make_pair(3, new nand_link()),
+    std::make_pair(4, new nand_link()),
+    std::make_pair(10, new nand_link()),
+    std::make_pair(11, new nand_link())
   };
   this->type = lex::CHIPSET;
 }
 
-Component_4081::~Component_4081()
+Component_4011::~Component_4011()
 {
 }
 
-nts::Tristate		Component_4081::Compute(size_t pin_num_this)
+nts::Tristate		Component_4011::Compute(size_t pin_num_this)
 {
   lex::chipset_type	getType;
 
@@ -47,14 +47,14 @@ nts::Tristate		Component_4081::Compute(size_t pin_num_this)
 	       && this->links.find(pin_num_this) != this->links.end())
 	{
 	  std::vector<onePinComp*> opc = this->links[pin_num_this]->getPin();
-	  and_link *tmp = dynamic_cast<and_link*>(this->links[pin_num_this]);
-	  return (tmp->and_op(opc[1]->getState(), opc[2]->getState()));
+	  nand_link *tmp = dynamic_cast<nand_link*>(this->links[pin_num_this]);
+	  return (tmp->nand_op(opc[1]->getState(), opc[2]->getState()));
 	}
     }
   return (nts::Tristate::UNDEFINED);
 }
 
-void			Component_4081::SetLink(size_t pin_num_this,
+void			Component_4011::SetLink(size_t pin_num_this,
 						nts::IComponent &component,
 						size_t pin_num_target)
 {
@@ -67,16 +67,16 @@ void			Component_4081::SetLink(size_t pin_num_this,
     }
 }
 
-void		Component_4081::Dump(void) const
+void		Component_4011::Dump(void) const
 {
 }
 
-lex::chipset_type	Component_4081::getType() const
+lex::chipset_type	Component_4011::getType() const
 {
   return (this->type);
 }
 
-std::map<size_t, nts::IComponent*>	Component_4081::getConnexion() const
+std::map<size_t, nts::IComponent*>	Component_4011::getConnexion() const
 {
   return (this->connexion);
 }
